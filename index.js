@@ -14,7 +14,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/scheduling')
 
 // Routes
 app.get("/", (req, res) => {
-    res.send("Test!");
+    res.render("home");
 })
 
 app.get("/cadastro", (req, res) => {
