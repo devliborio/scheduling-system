@@ -27,6 +27,18 @@ class AppointmentService {
 
     }
 
+    async GetAll(showFinished) { // Método que vai ser usado no sistema de busca de consultas, e também na exibição das consultas.
+
+        if (showFinished) { // Se for para mostrar todas as consultas inclusive as que já estão finalizadas:
+            return await Appo.find();
+
+        } else { // Caso não seja para exibir as consultas que já estão finalizadas:
+            return await Appo.find({ 'finished': false });
+            
+        }
+
+    }
+
 }
 
 module.exports = new AppointmentService();

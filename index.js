@@ -14,12 +14,17 @@ app.set('view engine', 'ejs');
 mongoose.connect('mongodb://127.0.0.1:27017/scheduling')
 
 // Routes
-app.get("/", (req, res) => {
-    res.render("home");
+app.get('/', (req, res) => {
+    res.render('home');
 })
 
-app.get("/cadastro", (req, res) => {
+app.get('/cadastro', (req, res) => {
     res.render("create");
+})
+
+app.get('/getcalendar', async (req, res) => {
+    let consultas = await appointmentService.GetAll(false); // Definindo a variável showFinished como false ele só irá exibir as consultas que não estão finalizadas.
+    res.json(consultas);
 })
 
 app.post('/create', async (req, res) => {
@@ -33,15 +38,15 @@ app.post('/create', async (req, res) => {
         req.body.time
     )
 
-    if(status){
+    if (status) {
         res.redirect("/");
     } else {
         res.status(400);
-        res.send("Ocorreu uma falha na criação da consulta!");
+        res.send('Ocorreu uma falha na criação da consulta!');
     }
 
 });
 
 app.listen(9090, (req, res) => {
-    console.log("Servidor Rodando!")
+    console.log('Servidor Rodando!')
 })
