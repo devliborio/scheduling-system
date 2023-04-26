@@ -23,8 +23,8 @@ app.get('/cadastro', (req, res) => {
 })
 
 app.get('/getcalendar', async (req, res) => {
-    let consultas = await appointmentService.GetAll(false); // Definindo a variável showFinished como false ele só irá exibir as consultas que não estão finalizadas.
-    res.json(consultas);
+    let appointments = await appointmentService.GetAll(false); // Definindo a variável showFinished como false ele só irá exibir as consultas que não estão finalizadas.
+    res.json(appointments);
 })
 
 app.post('/create', async (req, res) => {

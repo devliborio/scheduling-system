@@ -1,5 +1,6 @@
 const appointment = require('../models/Appointment');
 const mongoose = require('mongoose');
+const AppointmentFactory = require('../factories/AppointmentFactory');
 
 const Appo = mongoose.model('Appointment', appointment); // Model
 
@@ -33,8 +34,16 @@ class AppointmentService {
             return await Appo.find();
 
         } else { // Caso não seja para exibir as consultas que já estão finalizadas:
-            return await Appo.find({ 'finished': false });
-            
+            let appos = await Appo.find({ 'finished': false });
+            let appointments = [];
+
+            appos.forEach(appointment => {
+                if (appointment.date != undefined) {
+                    appointments.push(AppointmentFactory.Build(appointment))
+                }
+            });
+
+            return appointments;
         }
 
     }
