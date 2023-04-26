@@ -9,7 +9,7 @@ class AppointmentFactory {
         let minutes = Number.parseInt(simpleAppointment.time.split(":")[1]); // Pegando minutos do objeto time().
 
         let startDate = new Date(year, month, day, hour, minutes, 0, 0);
-        startDate.setHours(startDate.getHours() - 3); // Realizando a correção do UTC para o horário correto do brasil
+        // startDate.setHours(startDate.getHours() - 3); // Realizando a correção do UTC para o horário correto do brasil
 
         let appo = {
             id: simpleAppointment._id,
