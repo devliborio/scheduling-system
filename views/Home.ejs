@@ -44,7 +44,9 @@
   let element = document.getElementById('calendar');
   let calendar = new FullCalendar.Calendar(element, {
       initialView: 'dayGridMonth',
+      contentHeight: 700,
       locale: 'pt-br',
+      events: 'getcalendar' 
   });
 
   calendar.render();
