@@ -46,7 +46,10 @@
       initialView: 'dayGridMonth',
       contentHeight: 700,
       locale: 'pt-br',
-      events: 'getcalendar' 
+      events: 'getcalendar',
+      eventClick: function(info){ // Detecção de clique no FullCalendar
+         window.location.href = '/event/'+info.event.id
+      }
   });
 
   calendar.render();

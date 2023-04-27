@@ -27,6 +27,10 @@ app.get('/getcalendar', async (req, res) => {
     res.json(appointments);
 })
 
+app.get('/event/:id', async (req, res) => {
+    res.json({ id: req.params.id });
+})
+
 app.post('/create', async (req, res) => {
 
     let status = await appointmentService.Create(
