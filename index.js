@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const appointmentService = require('./services/AppointmentService');
+const AppointmentService = require('./services/AppointmentService');
 
 app.use(express.static("public"));
 
@@ -28,7 +29,8 @@ app.get('/getcalendar', async (req, res) => {
 })
 
 app.get('/event/:id', async (req, res) => {
-    res.json({ id: req.params.id });
+    let appointment = await AppointmentService.GetById(req.params.id);
+    res.render('Event',{appo: appointment});
 })
 
 app.post('/create', async (req, res) => {
